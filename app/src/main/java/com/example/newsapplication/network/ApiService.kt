@@ -8,14 +8,15 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET(EndPoints.TOP_HEADLINES)
-    suspend fun topHeadlines(
+    suspend fun getTopHeadlines(
         @Query("country") country: String = EndPoints.COUNTRY,
         @Query("apiKey") apiKey: String = EndPoints.API_KEY
     ): BaseResponse<List<NewsApiResponse>>
 
     @GET(EndPoints.TOP_HEADLINES)
     suspend fun getCategoryNews(
-        @Query("category") sortBy: String,
+        @Query("country") country: String = EndPoints.COUNTRY,
+        @Query("category") category: String,
         @Query("apiKey") apiKey: String = EndPoints.API_KEY
     ): BaseResponse<List<NewsApiResponse>>
 

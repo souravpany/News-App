@@ -1,9 +1,9 @@
 package com.example.newsapplication.ui.main
 
 import android.annotation.SuppressLint
-import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.newsapplication.R
 import androidx.activity.compose.setContent
@@ -31,6 +31,7 @@ import com.example.newsapplication.data.models.HomeGridData
 import androidx.compose.foundation.Image
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.platform.LocalContext
+import com.example.newsapplication.ui.news_list.NewsListActivity
 import com.example.newsapplication.util.HomeGridCellEnum
 
 class MainActivity : ComponentActivity() {
@@ -56,7 +57,7 @@ fun AppBar() {
 
 @Composable
 fun GridView(gridData: List<HomeGridData>) {
-    val activity = (LocalContext.current as? Activity)
+    val context = LocalContext.current
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 250.dp),
         contentPadding = PaddingValues(8.dp),
@@ -71,8 +72,8 @@ fun GridView(gridData: List<HomeGridData>) {
                         HomeGridCellEnum.SPORTS,
                         HomeGridCellEnum.TECHNOLOGY,
                         HomeGridCellEnum.TOP_HEADLINES -> navigateToNewListScreen(
-                            activity,
-                            onClickedItem.name.gridName
+                            context,
+                            onClickedItem.name
                         )
                     }
                 }
@@ -81,8 +82,13 @@ fun GridView(gridData: List<HomeGridData>) {
     )
 }
 
-fun navigateToNewListScreen(activity: Activity?, gridName: String) {
-    Toast.makeText(activity, "$gridName is Clicked", Toast.LENGTH_SHORT).show()
+/**
+ * Start an new activity with help of [context] and [name]
+ * */
+fun navigateToNewListScreen(context: Context?, name: HomeGridCellEnum) {
+    val intent = Intent(context, NewsListActivity::class.java)
+    intent.putExtra("news_type", name.gridName)
+    context?.startActivity(intent)
 }
 
 @OptIn(ExperimentalMaterialApi::class)
