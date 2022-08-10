@@ -20,5 +20,5 @@ It loads the news articles using [news api](https://newsapi.org/). Using retrofi
 ## Architecture
 This app uses [MVVM (Model View View-Model)](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) with clean architecture.
 
-![](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
+![mvvm-clean-architecture](https://user-images.githubusercontent.com/60592904/183826674-6ef9b3b5-358e-4ac6-b224-4f5bb200d9f3.png)
 
