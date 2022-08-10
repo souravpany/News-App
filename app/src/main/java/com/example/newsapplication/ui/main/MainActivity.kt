@@ -31,6 +31,8 @@ import com.example.newsapplication.data.models.HomeGridData
 import androidx.compose.foundation.Image
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import com.example.newsapplication.common.Constant
 import com.example.newsapplication.ui.news_list.NewsListActivity
 import com.example.newsapplication.util.HomeGridCellEnum
 
@@ -52,7 +54,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AppBar() {
-    TopAppBar(title = { Text(text = ".N E W S.") })
+    TopAppBar(title = { Text(text = stringResource(id = R.string.app_home_header)) })
 }
 
 @Composable
@@ -87,7 +89,7 @@ fun GridView(gridData: List<HomeGridData>) {
  * */
 fun navigateToNewListScreen(context: Context?, name: HomeGridCellEnum) {
     val intent = Intent(context, NewsListActivity::class.java)
-    intent.putExtra("news_type", name.gridName)
+    intent.putExtra(Constant.NEWS_TYPE_KEY, name.gridName)
     context?.startActivity(intent)
 }
 

@@ -1,7 +1,7 @@
 package com.example.newsapplication.ui.news_list
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -16,7 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.example.newsapplication.common.Constant
 import com.example.newsapplication.ui.common.DisplayNewsItem
+import com.example.newsapplication.ui.news_details.NewsDetailsActivity
 import com.example.newsapplication.util.HomeGridCellEnum
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,13 +42,13 @@ class NewsListActivity : ComponentActivity() {
 
     @Composable
     fun AppBar() {
-        intent.extras?.getString("news_type")?.let {
+        intent.extras?.getString(Constant.NEWS_TYPE_KEY)?.let {
             TopAppBar(title = { Text(text = ".$it.") })
         }
     }
 
     private fun getNewsCategoryAndCallApi() {
-        intent.extras?.getString("news_type")?.let {
+        intent.extras?.getString(Constant.NEWS_TYPE_KEY)?.let {
             when (it) {
                 HomeGridCellEnum.TOP_HEADLINES.gridName -> {
                     viewModel.getTopHeadLines()
@@ -93,8 +95,9 @@ class NewsListActivity : ComponentActivity() {
                 newsList?.articles?.let { result ->
                     items(result) { item ->
                         DisplayNewsItem(newsApiResponse = item) {
-                            Toast.makeText(context, "Not Implemented..!!", Toast.LENGTH_SHORT)
-                                .show()
+                            val intent = Intent(context, NewsDetailsActivity::class.java)
+                            intent.putExtra(Constant.NEWS_DETAILS_KEY, item)
+                            startActivity(intent)
                         }
                     }
                 }

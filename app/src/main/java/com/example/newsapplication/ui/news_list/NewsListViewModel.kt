@@ -5,8 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsapplication.common.ApiResult
-import com.example.newsapplication.domain.use_case.GetCategoryNewsUseCase
-import com.example.newsapplication.domain.use_case.GetTopHeadlineUseCase
+import com.example.newsapplication.domain.GetCategoryNewsUseCase
+import com.example.newsapplication.domain.GetTopHeadlineUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

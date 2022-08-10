@@ -1,22 +1,26 @@
 package com.example.newsapplication.data.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
+@Parcelize
 data class NewsApiResponse(
     @SerializedName("source")
-    var source: NewsSourceApiResponse?,
+    var source: @RawValue NewsSourceApiResponse?,
     @SerializedName("author")
-    var author: String?,
+    var author: @RawValue String?,
     @SerializedName("title")
-    var title: String?,
+    var title: @RawValue String?,
     @SerializedName("description")
-    var description: String?,
+    var description: @RawValue String?,
     @SerializedName("url")
-    var url: String?,
+    var url: @RawValue String?,
     @SerializedName("urlToImage")
-    var urlToImage: String?,
+    var urlToImage: @RawValue String?,
     @SerializedName("publishedAt")
-    var publishedAt: String?,
+    var publishedAt: @RawValue String?,
     @SerializedName("content")
-    var content: String?
-)
+    var content: @RawValue String?
+) : Parcelable

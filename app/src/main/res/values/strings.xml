@@ -7,5 +7,6 @@
     <string name="science">SCIENCE</string>
     <string name="sports">SPORTS</string>
     <string name="technology">TECHNOLOGY</string>
+    <string name="app_home_header">".N E W S."</string>
 
 </resources>

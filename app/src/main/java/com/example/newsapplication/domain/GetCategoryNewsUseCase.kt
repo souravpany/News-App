@@ -1,4 +1,4 @@
-package com.example.newsapplication.domain.use_case
+package com.example.newsapplication.domain
 
 import com.example.newsapplication.common.ApiResult
 import com.example.newsapplication.data.models.BaseResponse
@@ -10,14 +10,14 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class GetTopHeadlineUseCase @Inject constructor(
+class GetCategoryNewsUseCase @Inject constructor(
     private val repository: NewsRepository,
 ) {
-    operator fun invoke(): Flow<ApiResult<BaseResponse<List<NewsApiResponse>>>> =
+    operator fun invoke(category: String): Flow<ApiResult<BaseResponse<List<NewsApiResponse>>>> =
         flow {
             try {
                 emit(ApiResult.Loading())
-                val newsHeadLines = repository.getTopHeadlines()
+                val newsHeadLines = repository.getCategoryNews(category.lowercase())
                 emit(ApiResult.Success(newsHeadLines))
             } catch (e: HttpException) {
                 emit(ApiResult.Error(e.localizedMessage ?: "An Unexpected error occured"))
