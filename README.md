@@ -15,6 +15,7 @@ It loads the news articles using [news api](https://newsapi.org/). Using retrofi
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes.  
 - [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
+- [CMake — Native Libraries with NDK](https://blog.kotlin-academy.com/how-to-secure-secrets-in-android-android-security-01-a345e97c82be) - A methodlogy to obscuring your API key in a bitter way.
 
 
 ## Architecture
